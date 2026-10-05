@@ -10,10 +10,15 @@ private:
     std::size_t size_{0};
 
 public:
-    __host__ __device__ VectorView() = default;
+    __host__ __device__ VectorView() {}
 
     __host__ __device__ VectorView(AtomT* data, std::size_t size)
         : data_(data), size_(size) {}
+
+    template <typename OtherT>
+    requires std::is_convertible_v<OtherT*, AtomT*>
+    __host__ __device__ VectorView(const VectorView<OtherT>& other)
+        : data_(other.data()), size_(other.size()) {}
 
     __host__ __device__ std::size_t size() const noexcept {
         return size_;
