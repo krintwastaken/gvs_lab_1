@@ -2,4 +2,3 @@ build/
 benchmark_results.json
 complexity.html
 speedup.html
-figures/
