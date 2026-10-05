@@ -2,8 +2,6 @@
 #include <Eigen/Dense>
 #include <cuda_runtime.h>
 #include "Vector.cuh"
-#include "Kernel.cuh"
-#include "CudaCheck.cuh"
 
 static void BM_VecAdd_Eigen(benchmark::State& state) {
     const std::size_t n = static_cast<std::size_t>(state.range(0));
